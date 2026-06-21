@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>万博体育 – 用户导向的快速识别页面</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f2f3f5;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #1e2229;
+      line-height: 1.7;
+      padding: 2rem 1rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 960px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* Hero 区 – 开场短句 */
+    .hero {
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      padding: 2.8rem 2.4rem;
+      margin-bottom: 2rem;
+      border: 1px solid #e5e7ea;
+      transition: box-shadow 0.2s;
+    }
+
+    .hero:hover {
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.8rem;
+      color: #0f1419;
+    }
+
+    .hero .tagline {
+      font-size: 1.1rem;
+      color: #536471;
+      border-left: 4px solid #1d9bf0;
+      padding-left: 1rem;
+      margin-top: 0.6rem;
+    }
+
+    /* 承接段落卡片 */
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+      padding: 2rem 2.2rem;
+      margin-bottom: 1.8rem;
+      border: 1px solid #e2e5e9;
+    }
+
+    .card h2 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #1a1f26;
+    }
+
+    .card p {
+      margin-bottom: 1rem;
+      color: #2c313a;
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .inline-link {
+      color: #1d4ed8;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dashed #b0c4e8;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .inline-link:hover {
+      color: #0b2d7a;
+      border-bottom-style: solid;
+      border-color: #0b2d7a;
+    }
+
+    /* 特点区域 – 使用 flex 网格 */
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin: 1.5rem 0 0.5rem;
+    }
+
+    .feature-item {
+      background: #fafbfc;
+      flex: 1 1 200px;
+      min-width: 160px;
+      padding: 1.2rem 1rem;
+      border-radius: 14px;
+      border: 1px solid #e5e9ed;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
+      transition: all 0.15s ease;
+    }
+
+    .feature-item:hover {
+      background: #ffffff;
+      border-color: #cbd5e0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .feature-item strong {
+      display: block;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      color: #111827;
+    }
+
+    .feature-item span {
+      font-size: 0.9rem;
+      color: #4b5563;
+      line-height: 1.5;
+    }
+
+    /* 场景描述（温和结尾前） */
+    .scene-note {
+      background: #f8f9fc;
+      border-radius: 14px;
+      padding: 1.4rem 1.8rem;
+      margin-top: 1rem;
+      border-left: 4px solid #1d9bf0;
+      color: #2c3e50;
+    }
+
+    /* 温和结尾 */
+    .closing {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.8rem 2.2rem;
+      border: 1px solid #e2e5e9;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+      margin-top: 0.5rem;
+      text-align: center;
+      color: #374151;
+    }
+
+    .closing p {
+      margin-bottom: 0.6rem;
+    }
+
+    .closing .signature {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-top: 0.8rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem 0.8rem;
+      }
+      .hero {
+        padding: 2rem 1.2rem;
+      }
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+      .card, .closing {
+        padding: 1.5rem 1.2rem;
+      }
+      .feature-grid {
+        flex-direction: column;
+      }
+    }
+
+    /* FAQ 摘要简易样式（仅作点缀） */
+    .faq-mini {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 1.2rem 1.6rem;
+      margin: 1.2rem 0 0.8rem;
+      border: 1px solid #e8ebef;
+    }
+
+    .faq-mini summary {
+      font-weight: 600;
+      cursor: pointer;
+      color: #1f2937;
+      padding: 0.3rem 0;
+    }
+
+    .faq-mini p {
+      margin: 0.6rem 0 0.2rem;
+      color: #4b5563;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- 开场短句 -->
+  <section class="hero">
+    <h1>万博体育 · 一眼即识</h1>
+    <div class="tagline">
+      当用户打开页面，三秒内便能理解网站的用途与边界。
+    </div>
+  </section>
+
+  <!-- 承接段落：快速识别切入点 -->
+  <div class="card">
+    <h2>它是什么？用在何处？</h2>
+    <p>
+      如果你正寻找一个以体育内容为核心的信息节点，<a href="https://pages-wanbosports.com" class="inline-link">万博体育</a> 
+      所提供的正是这样一处定位清晰的站点。从赛事动态到运动文化，页面结构围绕「快速判断」这一需求展开——
+      没有多余的干扰，只有直接的信息分区和克制的引导。
+    </p>
+    <p>
+      很多访问者会先问：这个网站能帮我做什么？答案藏在其内容的组织方式中：每一项说明都对应一个实际场景，
+      而不是空泛的标语。例如下方特点列表，就是基于用户常见疑问提炼而成。
+    </p>
+  </div>
+
+  <!-- 特点列表（卡片风格，差异化） -->
+  <div class="card">
+    <h2>四项可快速识别的特征</h2>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <strong>语境自明</strong>
+        <span>标题与段落直接反映内容范畴，避免抽象命名，降低理解成本。</span>
+      </div>
+      <div class="feature-item">
+        <strong>结构轻量</strong>
+        <span>卡片式分区，每块只讲一件事，视觉节奏舒缓，信息密度适中。</span>
+      </div>
+      <div class="feature-item">
+        <strong>无过度承诺</strong>
+        <span>所有描述基于功能本身，不使用“最佳”“第一”等夸大词汇，保持可信。</span>
+      </div>
+      <div class="feature-item">
+        <strong>入口清晰</strong>
+        <span>核心链接（<a href="https://pages-wanbosports.com" class="inline-link">万博体育</a>）自然嵌入叙述，不单独强调“点击这里”。</span>
+      </div>
+    </div>
+    <!-- 小提示：场景化补充 -->
+    <div class="scene-note">
+      ⚡ 典型场景：新用户通过搜索引擎或推荐链接到达页面，希望在 10 秒内确认这是否是自己要找的体育类站点。
+      本页面的设计正是为了服务这一瞬间的判断。
+    </div>
+  </div>
+
+  <!-- FAQ 摘要（和缓插入，不喧宾夺主） -->
+  <details class="faq-mini">
+    <summary>FAQ 摘要：你可能还想了解</summary>
+    <p><strong>Q:</strong> 页面内容会频繁更新吗？<br>
+    <strong>A:</strong> 更新节奏依据体育赛事周期及信息价值而定，保持内容相关且克制。</p>
+    <p><strong>Q:</strong> 链接是否直接导向主要服务？<br>
+    <strong>A:</strong> 是的，文中嵌入的 <a href="https://pages-wanbosports.com" class="inline-link">万博体育</a> 指向的即是该站点的目标地址。</p>
+  </details>
+
+  <!-- 温和结尾 -->
+  <div class="closing">
+    <p>一个页面若能让人快速理解其用途，就已经完成了最重要的沟通。</p>
+    <p>无需多余修饰，也无需催促行动；信息本身，就是最好的指引。</p>
+    <div class="signature">—— 基于用户视角构建的简要介绍 · 万博体育</div>
+  </div>
+
+</div>
+</body>
+</html>
